@@ -19,6 +19,7 @@
 </template>
 <script>
 import axios from 'axios'
+// import VueAxios from 'vue-axios'
 export default {
     data() {
         return {
@@ -737,13 +738,18 @@ export default {
             //console.log(dddd)
         },
         async ApiTT(){
-            const test1 = await axios.get("https://quality.data.gov.tw/dq_download_json.php?nid=155901&md5_url=e0627b35294d844b5eb8d1fe093678f6")
-            console.log(test1);
-            console.log(test1.status);
-            const test2 = test1.data;
-            const dddd = test2.map(x => Object.entries(x)).flat()
+            //const test1 = await axios.get("https://quality.data.gov.tw/dq_download_json.php?nid=155901&md5_url=e0627b35294d844b5eb8d1fe093678f6")
+            //console.log(test1);
+            //console.log(test1.status);
+            const test3 = await axios({
+                method: 'get',
+                url: 'https://quality.data.gov.tw/dq_download_json.php?nid=155901&md5_url=e0627b35294d844b5eb8d1fe093678f6'
+            })
+            console.log(test3)
+            //const test2 = test1.data;
+            //const dddd = test2.map(x => Object.entries(x)).flat()
             // const bbbb = this.aaaa.map(x => Object.values(x)).flat()
-            dddd.forEach(x => { if (x[0] === "鄉鎮市區") { console.log(x) } })
+            //dddd.forEach(x => { if (x[0] === "鄉鎮市區") { console.log(x) } })
             //const dddd = WWWW.map(x => Object.entries(x)).flat()
             //dddd.forEach(x => { if (x[0] === "鄉鎮市區") { console.log(x) } })
         }
